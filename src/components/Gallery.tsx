@@ -5,7 +5,6 @@ import img1 from '../assets/projects/1.jpg';
 import img2 from '../assets/projects/2.jpg';
 import img3 from '../assets/projects/3.jpg';
 
-
 const galleryImages = [
   {
     src: img1,
@@ -149,222 +148,68 @@ const Gallery = () => {
 };
 
 const GalleryImage = ({ image, onSelect, index }) => {
-  const ref = useRef(null);
-  
-  // Spring animations for smoother movement
-  const x = useSpring(0, { stiffness: 150, damping: 15 });
-  const y = useSpring(0, { stiffness: 150, damping: 15 });
-
-  // Transform values with increased range for more dramatic effect
-  const rotateX = useTransform(y, [-100, 100], [15, -15]);
-  const rotateY = useTransform(x, [-100, 100], [-15, 15]);
-  const scale = useTransform(
-    [x, y],
-    ([latestX, latestY]) => 1 + Math.sqrt(latestX * latestX + latestY * latestY) / 1000
-  );
-
-  const handleMouseMove = (event) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set(event.clientX - centerX);
-    y.set(event.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
     <motion.div
-      ref={ref}
-      variants={{
-        hidden: { 
-          opacity: 0,
-          y: 50,
-          rotateX: 10,
-          rotateY: -10
-        },
-        visible: {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          rotateY: 0,
-          transition: {
-            type: 'spring',
-            stiffness: 100,
-            damping: 20,
-            delay: index * 0.1
-          }
-        }
-      }}
-      whileHover={{ scale: 1.02 }}
-      className="relative h-[400px] rounded-xl overflow-hidden group cursor-pointer"
-      style={{
-        perspective: 1000
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onClick={onSelect}
+      key={index}
+      className="relative cursor-pointer overflow-hidden group"
+      onClick={() => onSelect(image)}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
     >
-      <motion.div
-        className="absolute inset-0 w-full h-full"
-        style={{
-          rotateX,
-          rotateY,
-          scale,
-          transformStyle: 'preserve-3d'
-        }}
-      >
-        <motion.img
-          src={image.src}
-          alt={image.title}
-          className="w-full h-full object-cover"
-          style={{
-            transformStyle: 'preserve-3d',
-            transform: 'translateZ(20px)'
-          }}
-        />
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{
-            transform: 'translateZ(30px)'
-          }}
-        >
-          <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-            <h3 className="text-2xl font-bold mb-2">{image.title}</h3>
-            <div className="flex flex-wrap gap-2">
-              {image.tags.map((tag, idx) => (
-                <span 
-                  key={idx}
-                  className="px-3 py-1 bg-rose-500/80 text-sm rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+      <motion.img
+        src={image.src}
+        alt={image.title}
+        className="w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+      />
+      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <h3 className="text-white text-lg font-bold">{image.title}</h3>
+      </div>
     </motion.div>
   );
 };
 
 const ImageDetailModal = ({ image, onClose }) => {
-  const modalVariants = {
-    hidden: { 
-      opacity: 0,
-      scale: 0.8,
-      y: 50,
-      rotateX: 10
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 30
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      y: -50,
-      rotateX: -10,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
   return (
-    <motion.div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-    >
-      <motion.div 
-        variants={modalVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex justify-between items-center p-6 bg-rose-600 text-white">
-          <h2 className="text-2xl font-bold">{image.title}</h2>
-          <motion.button
-            whileHover={{ rotate: 90 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={onClose}
-            className="p-1 hover:bg-white/20 rounded-full transition-colors"
+    <AnimatePresence>
+      {image && (
+        <motion.div
+          className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="bg-white rounded-lg shadow-lg overflow-hidden max-w-lg w-full"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <X size={24} />
-          </motion.button>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8 p-8">
-          <div className="relative group">
-            <motion.img
-              src={image.src}
-              alt={image.title}
-              className="w-full h-[300px] md:h-[400px] object-cover rounded-xl"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            />
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white"
-              >
-                <Download size={20} />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white"
-              >
-                <Share2 size={20} />
-              </motion.button>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold text-rose-600 mb-4">
-              Project Details
-            </h3>
-            <p className="text-gray-700 mb-6">
-              {image.description}
-            </p>
-            <div>
-              <h4 className="text-lg font-semibold text-gray-800 mb-3">Tags</h4>
+            <img src={image.src} alt={image.title} className="w-full h-64 object-cover" />
+            <div className="p-4">
+              <h2 className="text-2xl font-bold mb-2">{image.title}</h2>
+              <p className="text-gray-600 mb-4">{image.description}</p>
               <div className="flex flex-wrap gap-2">
                 {image.tags.map((tag, idx) => (
-                  <motion.span
-                    key={idx}
-                    className="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: idx * 0.1 }}
-                  >
+                  <span key={idx} className="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
+            <button
+              className="absolute top-2 right-2 text-white bg-red-500 rounded-full p-2"
+              onClick={onClose}
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

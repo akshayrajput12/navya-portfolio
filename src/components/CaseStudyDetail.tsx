@@ -129,13 +129,13 @@ const CaseStudyDetail = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="min-h-screen flex items-center justify-center dark:bg-slate-900"
+        className="min-h-screen flex items-center justify-center"
       >
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4 dark:text-white">Case Study Not Found</h2>
+          <h2 className="text-2xl font-bold mb-4">Case Study Not Found</h2>
           <Link 
             to="/" 
-            className="text-rose-600 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300 inline-flex items-center transition-colors"
+            className="text-rose-600 hover:text-rose-700 inline-flex items-center transition-colors"
           >
             <ArrowLeft className="mr-2" /> Return Home
           </Link>
@@ -150,7 +150,7 @@ const CaseStudyDetail = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300"
+        className="min-h-screen bg-white transition-colors duration-300"
       >
         {/* Hero Section with Parallax */}
         <motion.div 
@@ -171,7 +171,7 @@ const CaseStudyDetail = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="absolute inset-0 bg-black/50 dark:bg-black/70" 
+            className="absolute inset-0 bg-black/50" 
           />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -220,19 +220,19 @@ const CaseStudyDetail = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="animate-section grid md:grid-cols-2 gap-12 mb-20"
+            className="animate-section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-12 mb-20"
           >
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-6">
                 The Challenge
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{study.challenge}</p>
+              <p className="text-gray-600 leading-relaxed">{study.challenge}</p>
             </div>
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-6">
                 Our Solution
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{study.solution}</p>
+              <p className="text-gray-600 leading-relaxed">{study.solution}</p>
             </div>
           </motion.div>
 
@@ -244,10 +244,10 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section mb-20"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
               Our Process
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {study.process.map((step, index) => (
                 <motion.div
                   key={index}
@@ -261,13 +261,13 @@ const CaseStudyDetail = () => {
                     stiffness: 300
                   }}
                   viewport={{ once: true }}
-                  className="relative p-8 bg-gray-50 dark:bg-slate-800 rounded-lg hover:shadow-lg dark:shadow-slate-700/50 transition-all duration-300 group"
+                  className="relative p-8 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 group"
                 >
-                  <div className="absolute -top-4 left-8 w-8 h-8 bg-rose-600 dark:bg-rose-500 text-white rounded-full flex items-center justify-center font-bold group-hover:rotate-12 transition-transform">
+                  <div className="absolute -top-4 left-8 w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center font-bold group-hover:rotate-12 transition-transform">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 mt-2 text-gray-900 dark:text-white">{step.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+                  <h3 className="text-xl font-semibold mb-4 mt-2 text-gray-900">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -281,10 +281,10 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section mb-20"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
               The Results
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {study.results.map((result, index) => (
                 <motion.div
                   key={index}
@@ -298,10 +298,10 @@ const CaseStudyDetail = () => {
                     stiffness: 300
                   }}
                   viewport={{ once: true }}
-                  className="p-6 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-lg shadow-sm hover:shadow-md dark:shadow-slate-700/50 transition-all duration-300 group"
+                  className="p-6 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="w-3 h-3 bg-rose-600 dark:bg-rose-500 rounded-full mb-4 group-hover:animate-pulse" />
-                  <p className="text-lg font-medium text-gray-900 dark:text-white">{result}</p>
+                  <div className="w-3 h-3 bg-rose-600 rounded-full mb-4 group-hover:animate-pulse" />
+                  <p className="text-lg font-medium text-gray-900">{result}</p>
                 </motion.div>
               ))}
             </div>
@@ -315,10 +315,10 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
               Project Gallery
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               {study.gallery.map((image, index) => (
                 <motion.div
                   key={index}

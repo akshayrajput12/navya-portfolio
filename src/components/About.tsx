@@ -223,100 +223,83 @@ export default function About() {
     return (
       <AnimatePresence>
         {showDetails && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto"
+            onClick={() => setShowDetails(false)}
           >
-            <motion.div 
-              {...card3DProps}
-              initial={{ opacity: 0, scale: 0.8, rotateX: -15, rotateY: 15 }}
-              animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.8, rotateX: -15, rotateY: 15 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 20,
-                duration: 0.5
-              }}
-              className="bg-white/90 rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative p-10 shadow-2xl border border-slate-200"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 50 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6 relative"
+              onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowDetails(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
               {/* Modal Header */}
-              <div className="flex justify-between items-center mb-8">
-                <div className="flex items-center space-x-4">
-                  <SelectedIcon className="w-10 h-10 text-[rgb(225,29,72)]" />
-                  <h2 className="text-3xl font-bold text-[rgb(225,29,72)]">
-                    {selectedJourneyType === 'professional' 
-                      ? 'Professional Journey' 
-                      : selectedJourneyType === 'internships' 
-                      ? 'Internship Experiences' 
-                      : 'Educational Background'}
-                  </h2>
-                </div>
-                <button 
-                  onClick={() => setShowDetails(false)} 
-                  className="text-slate-500 hover:text-[rgb(225,29,72)] transition-colors"
-                >
-                  <X className="w-8 h-8" />
-                </button>
+              <div className="mb-8 text-center">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Professional Journey</h2>
+                <p className="text-gray-600">A detailed look at my career progression</p>
               </div>
 
-              {/* Journey Type Selector */}
-              <div className="flex justify-center space-x-4 mb-8">
-                {Object.keys(journeyData).map((type) => (
+              {/* Journey Navigation */}
+              <div className="flex flex-wrap justify-center mb-8 gap-2">
+                {['professional', 'internships', 'education'].map((type) => (
                   <button
                     key={type}
                     onClick={() => setSelectedJourneyType(type as any)}
-                    className={`
-                      flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
                       ${selectedJourneyType === type 
                         ? 'bg-[rgb(225,29,72)] text-white' 
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}
-                    `}
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      }`}
                   >
-                    {React.createElement(journeyIcons[type as keyof typeof journeyIcons], { className: 'w-5 h-5' })}
-                    <span className="capitalize">{type}</span>
+                    {type.charAt(0).toUpperCase() + type.slice(1)}
                   </button>
                 ))}
               </div>
 
-              {/* Journey Timeline */}
-              <div className="relative">
+              {/* Journey Content */}
+              <div className="space-y-6 px-4">
                 {journeyData[selectedJourneyType].map((item, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="mb-6 pl-16 relative border-l-4 border-slate-200 last:border-transparent"
+                    className="relative pl-8 pb-8 border-l-2 border-[rgb(225,29,72)] last:border-transparent"
                   >
-                    {/* Timeline Dot */}
-                    <div className="absolute left-0 top-0 w-12 h-12 -ml-[1.625rem] flex items-center justify-center rounded-full bg-[rgb(225,29,72)] text-white">
-                      <TrendingUp className="w-6 h-6" />
-                    </div>
-
-                    {/* Journey Item Content */}
-                    <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                      <div className="flex justify-between items-start mb-4">
+                    <div className="absolute left-0 top-0 w-4 h-4 -ml-[9px] rounded-full bg-[rgb(225,29,72)]" />
+                    <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
                         <div>
                           <h3 className="text-xl font-bold text-[rgb(225,29,72)]">
                             {item.title || item.degree || item.institution}
                           </h3>
-                          <p className="text-slate-600">
+                          <p className="text-gray-600">
                             {item.company || item.info || ''}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-2 text-slate-500">
-                          <Calendar className="w-4 h-4" />
-                          <span className="text-sm">{item.duration}</span>
+                        <div className="flex items-center mt-2 sm:mt-0">
+                          <Calendar className="w-4 h-4 text-gray-500 mr-2" />
+                          <span className="text-sm text-gray-500">{item.duration}</span>
                         </div>
                       </div>
 
                       {item.description && (
-                        <ul className="list-disc list-inside text-slate-700 mb-4 space-y-2">
+                        <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
                           {(item.description as string[]).map((desc, idx) => (
-                            <li key={idx}>{desc}</li>
+                            <li key={idx} className="text-sm sm:text-base">{desc}</li>
                           ))}
                         </ul>
                       )}
@@ -324,9 +307,9 @@ export default function About() {
                       {item.skills && (
                         <div className="flex flex-wrap gap-2">
                           {item.skills.map((skill, idx) => (
-                            <span 
-                              key={idx} 
-                              className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs"
+                            <span
+                              key={idx}
+                              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
                             >
                               {skill}
                             </span>
@@ -345,7 +328,8 @@ export default function About() {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-white via-rose-50 to-white">
+    <motion.section id="about" className="py-20 relative overflow-hidden bg-gradient-to-br from-white via-rose-50 to-white">
+      <motion.h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About Me</motion.h2>
       <div className="container mx-auto px-4">
         {/* Highlights Section */}
         <motion.div 
@@ -454,6 +438,6 @@ export default function About() {
         {/* Journey Modal */}
         <JourneyModal />
       </div>
-    </section>
+    </motion.section>
   );
 }

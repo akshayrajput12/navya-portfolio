@@ -6,8 +6,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Gallery from './components/Gallery';
-import CaseStudies from './components/CaseStudies';
-import CaseStudyDetail from './components/CaseStudyDetail';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -20,14 +18,12 @@ const App: React.FC = () => {
         <Navbar onMenuClick={() => setIsMobileMenuOpen(true)} />
         
         <Routes>
-          <Route path="/case-study/:id" element={<CaseStudyDetail />} />
           <Route path="/" element={
             <main>
               <Hero />
               <About />
               <Projects />
               <Gallery />
-              <CaseStudies />
               <Contact />
               <Footer />
             </main>

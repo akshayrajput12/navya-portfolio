@@ -2,6 +2,9 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import img1 from '../assets/projects/1.jpg';
+import img2 from '../assets/projects/2.jpg';
+import img3 from '../assets/projects/3.jpg';
 
 const caseStudies = [
   {
@@ -9,16 +12,16 @@ const caseStudies = [
     title: 'Brand Revival Campaign',
     client: 'Tech Innovators Inc.',
     category: 'Branding & Strategy',
-    image: 'https://source.unsplash.com/random/1200x800?branding',
+    image: img1,
     brief: 'Revitalizing a legacy tech brand for the modern era',
     objectives: 'To reposition the brand in the market and increase brand awareness.',
     challenges: 'Overcoming outdated brand perceptions and reaching a younger audience.',
     solutions: 'Developed a modern brand identity and launched a digital-first marketing campaign.',
     outcomes: 'Achieved a 40% increase in brand awareness and doubled social media engagement.',
     images: [
-      'https://source.unsplash.com/random/800x600?branding1',
-      'https://source.unsplash.com/random/800x600?branding2',
-      'https://source.unsplash.com/random/800x600?branding3'
+      img1,
+      img2,
+      img3
     ]
   },
   {
@@ -26,16 +29,15 @@ const caseStudies = [
     title: 'Digital Transformation',
     client: 'Global Retail Co.',
     category: 'Digital Strategy',
-    image: 'https://source.unsplash.com/random/1200x800?digital',
+    image: img2,
     brief: 'Leading a complete digital transformation initiative',
     objectives: 'To enhance online sales and improve customer satisfaction.',
     challenges: 'Integrating new technologies with existing systems.',
     solutions: 'Implemented an e-commerce platform and optimized user experience.',
     outcomes: 'Increased online sales by 300% and improved customer satisfaction by 65%.',
     images: [
-      'https://source.unsplash.com/random/800x600?digital1',
-      'https://source.unsplash.com/random/800x600?digital2',
-      'https://source.unsplash.com/random/800x600?digital3'
+      img2,
+      img3
     ]
   },
   {
@@ -43,16 +45,16 @@ const caseStudies = [
     title: 'Social Impact Campaign',
     client: 'EcoFriendly Solutions',
     category: 'Social Media & Impact',
-    image: 'https://source.unsplash.com/random/1200x800?sustainability',
+    image: img3,
     brief: 'Creating awareness for sustainable practices',
     objectives: 'To raise awareness about sustainability and drive community engagement.',
     challenges: 'Engaging a diverse audience and maintaining campaign momentum.',
     solutions: 'Launched a multi-channel campaign with influencer partnerships.',
     outcomes: 'Generated over 1M impressions and secured 200K pledge signatures.',
     images: [
-      'https://source.unsplash.com/random/800x600?sustainability1',
-      'https://source.unsplash.com/random/800x600?sustainability2',
-      'https://source.unsplash.com/random/800x600?sustainability3'
+      img3,
+      img2,
+      img1
     ]
   }
 ];

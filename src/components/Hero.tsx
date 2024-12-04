@@ -106,7 +106,7 @@ const Hero = () => {
   return (
     <motion.section 
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-rose-50 to-white relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-slate-50 via-rose-50 to-white relative overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ 

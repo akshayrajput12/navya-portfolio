@@ -106,7 +106,7 @@ const Contact = () => {
           }}
           className="bg-white shadow-2xl rounded-2xl overflow-hidden grid md:grid-cols-2"
         >
-          <div className="p-12 flex flex-col justify-center">
+          <div id="contact" className="p-12 flex flex-col justify-center">
             <motion.h2 
               variants={itemVariants}
               initial="hidden"

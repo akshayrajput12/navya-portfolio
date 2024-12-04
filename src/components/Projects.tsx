@@ -344,7 +344,7 @@ const ProjectDetailsModal = ({ project, onClose }) => {
 
         {/* Modal Content */}
         <div 
-          className="grid md:grid-cols-2 gap-8 p-4 md:p-8 overflow-y-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-8 overflow-y-auto"
           style={{ 
             maxHeight: 'calc(90vh - 100px)', 
             overflowY: 'auto' 
