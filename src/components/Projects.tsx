@@ -13,13 +13,17 @@ import {
   X,
   ChevronDown
 } from 'lucide-react';
+import img1 from '../assets/projects/1.jpg';
+import img2 from '../assets/projects/2.jpg';
+import img3 from '../assets/projects/3.jpg';
+
 
 const projects = [
   {
     title: 'Digital Marketing Campaign',
     description: 'Innovative digital strategy increasing brand engagement by 200%',
     tags: ['Social Media', 'Content Marketing', 'SEO'],
-    image: 'https://source.unsplash.com/random/800x600?digital-marketing',
+    image: img1,
     icons: [Zap, Code, Target],
     colors: {
       primary: 'text-teal-600',
@@ -64,7 +68,7 @@ const projects = [
     title: 'Brand Repositioning',
     description: 'Complete brand overhaul leading to 150% market expansion',
     tags: ['Branding', 'Strategy', 'Design'],
-    image: 'https://source.unsplash.com/random/800x600?branding',
+    image: img2,
     icons: [TrendingUp, Code, Target],
     colors: {
       primary: 'text-indigo-600',
@@ -109,7 +113,7 @@ const projects = [
     title: 'Performance Marketing',
     description: 'Data-driven approach resulting in 300% ROI improvement',
     tags: ['Analytics', 'PPC', 'Conversion'],
-    image: 'https://source.unsplash.com/random/800x600?marketing-analytics',
+    image: img3,
     icons: [Code, Target, Zap],
     colors: {
       primary: 'text-rose-600',

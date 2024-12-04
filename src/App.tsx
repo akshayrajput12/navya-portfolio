@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,22 +9,15 @@ import Gallery from './components/Gallery';
 import CaseStudies from './components/CaseStudies';
 import CaseStudyDetail from './components/CaseStudyDetail';
 import Contact from './components/Contact';
-import CustomCursor from './components/CustomCursor';
-import MobileMenu from './components/MobileMenu';
 import Footer from './components/Footer';
-import '@fontsource/playfair-display';
-import '@fontsource/montserrat';
-import './styles/globals.css';
 
-function App() {
+const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-white to-purple-50">
-        <CustomCursor />
         <Navbar onMenuClick={() => setIsMobileMenuOpen(true)} />
-        <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
         
         <Routes>
           <Route path="/case-study/:id" element={<CaseStudyDetail />} />
@@ -42,6 +36,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

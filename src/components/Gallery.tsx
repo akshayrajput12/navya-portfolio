@@ -1,40 +1,44 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { X, Download, Share2 } from 'lucide-react';
+import img1 from '../assets/projects/1.jpg';
+import img2 from '../assets/projects/2.jpg';
+import img3 from '../assets/projects/3.jpg';
+
 
 const galleryImages = [
   {
-    src: 'https://source.unsplash.com/random/800x600?marketing',
+    src: img1,
     title: 'Strategic Marketing Campaign',
     description: 'Innovative approach to digital marketing and brand storytelling',
     tags: ['Marketing', 'Digital Strategy', 'Branding']
   },
   {
-    src: 'https://source.unsplash.com/random/800x600?business',
+    src: img2,
     title: 'Corporate Branding Session',
     description: 'Capturing the essence of modern business communication',
     tags: ['Business', 'Corporate', 'Branding']
   },
   {
-    src: 'https://source.unsplash.com/random/800x600?technology',
+    src: img3,
     title: 'Tech Innovation Showcase',
     description: 'Visualizing cutting-edge technological advancements',
     tags: ['Technology', 'Innovation', 'Design']
   },
   {
-    src: 'https://source.unsplash.com/random/800x600?innovation',
+    src: img1,
     title: 'Creative Design Workshop',
     description: 'Exploring innovative design concepts and creative processes',
     tags: ['Design', 'Creativity', 'Workshop']
   },
   {
-    src: 'https://source.unsplash.com/random/800x600?strategy',
+    src: img2,
     title: 'Strategic Planning Session',
     description: 'Mapping out comprehensive business and marketing strategies',
     tags: ['Strategy', 'Planning', 'Business']
   },
   {
-    src: 'https://source.unsplash.com/random/800x600?design',
+    src: img3,
     title: 'Brand Identity Development',
     description: 'Creating unique and impactful visual brand identities',
     tags: ['Branding', 'Visual Identity', 'Design']

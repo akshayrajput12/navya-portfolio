@@ -5,6 +5,10 @@ import { ArrowLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import img1 from '../assets/projects/1.jpg';
+import img2 from '../assets/projects/2.jpg';
+import img3 from '../assets/projects/3.jpg';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const caseStudies = {
@@ -14,7 +18,7 @@ const caseStudies = {
     category: 'Branding & Strategy',
     duration: '6 months',
     year: '2023',
-    headerImage: 'https://source.unsplash.com/random/1920x1080?branding',
+    headerImage: img1,
     challenge: 'Tech Innovators Inc. faced declining market relevance and needed to reconnect with modern consumers while preserving their legacy of innovation.',
     solution: 'We developed a comprehensive brand revival strategy that honored their heritage while positioning them for the future. This included a visual identity refresh, targeted digital campaigns, and strategic partnerships.',
     process: [
@@ -49,71 +53,35 @@ const caseStudies = {
     client: 'DataSphere Solutions',
     category: 'Product Design & UX',
     duration: '8 months',
-    year: '2022',
-    headerImage: 'https://source.unsplash.com/random/1920x1080?ai,technology',
-    challenge: 'Create an intuitive AI platform that democratizes complex data analysis for non-technical users while maintaining advanced functionality.',
-    solution: 'Designed a user-centric AI platform with adaptive interfaces, machine learning-powered insights, and seamless data visualization tools.',
+    year: '2023',
+    headerImage: 'https://source.unsplash.com/random/1920x1080?technology',
+    challenge: 'DataSphere needed a user-friendly interface for their complex AI analytics platform that would cater to both technical and non-technical users.',
+    solution: 'We created an intuitive, adaptive interface that simplifies complex data visualization while maintaining advanced functionality for power users.',
     process: [
       {
         title: 'User Research',
-        description: 'Conducted in-depth user interviews and usability studies across different professional domains.'
+        description: 'Conducted extensive user interviews and usability testing to understand diverse user needs.'
       },
       {
-        title: 'Interaction Design',
-        description: 'Developed adaptive UI/UX that simplifies complex AI interactions for diverse user groups.'
+        title: 'Design System',
+        description: 'Developed a comprehensive design system that ensures consistency and accessibility.'
       },
       {
-        title: 'Iterative Prototyping',
-        description: 'Created multiple design iterations with continuous user feedback and testing.'
+        title: 'Iterative Design',
+        description: 'Implemented continuous feedback loops with stakeholders for optimal user experience.'
       }
     ],
     results: [
+      '45% reduction in user onboarding time',
       '92% user satisfaction rate',
-      '60% reduction in user learning curve',
-      '3x faster data insight generation',
-      'Winner of UX Design Excellence Award',
-      'Featured in TechCrunch'
+      '3x increase in daily active users',
+      '60% decrease in support tickets',
+      '25% improvement in task completion rates'
     ],
     gallery: [
-      'https://source.unsplash.com/random/800x600?dashboard',
-      'https://source.unsplash.com/random/800x600?datavisualization',
-      'https://source.unsplash.com/random/800x600?userinterface'
-    ]
-  },
-  'sustainable-ecommerce': {
-    title: 'Sustainable E-commerce Transformation',
-    client: 'GreenCart Marketplace',
-    category: 'Digital Strategy & Sustainability',
-    duration: '5 months',
-    year: '2023',
-    headerImage: 'https://source.unsplash.com/random/1920x1080?sustainability,ecommerce',
-    challenge: 'Redesign an e-commerce platform to prioritize sustainability, reduce carbon footprint, and create a more environmentally conscious shopping experience.',
-    solution: 'Developed a comprehensive digital strategy focusing on sustainable product curation, carbon-neutral shipping, and transparent environmental impact tracking.',
-    process: [
-      {
-        title: 'Sustainability Audit',
-        description: 'Comprehensive analysis of existing platform\'s environmental impact and potential improvements.'
-      },
-      {
-        title: 'Green Technology Integration',
-        description: 'Implemented carbon tracking, sustainable product badges, and eco-friendly recommendation algorithms.'
-      },
-      {
-        title: 'Community Engagement',
-        description: 'Created educational content and interactive features to promote sustainable consumer behavior.'
-      }
-    ],
-    results: [
-      '45% increase in eco-conscious product sales',
-      '30% reduction in platform carbon emissions',
-      '250% growth in sustainability-focused user base',
-      'Recognized by UN Sustainable Development Goals',
-      'Featured in Sustainable Brands Magazine'
-    ],
-    gallery: [
-      'https://source.unsplash.com/random/800x600?ecommerce',
-      'https://source.unsplash.com/random/800x600?sustainability',
-      'https://source.unsplash.com/random/800x600?digitalplatform'
+      'https://source.unsplash.com/random/800x600?artificial-intelligence',
+      'https://source.unsplash.com/random/800x600?data',
+      'https://source.unsplash.com/random/800x600?design'
     ]
   }
 };
@@ -123,7 +91,6 @@ const CaseStudyDetail = () => {
   const study = caseStudies[id as keyof typeof caseStudies];
 
   useEffect(() => {
-    // Scroll animations
     const sections = document.querySelectorAll('.animate-section');
     
     sections.forEach((section) => {
@@ -146,7 +113,6 @@ const CaseStudyDetail = () => {
       );
     });
 
-    // Parallax effect for header
     gsap.to('.parallax-header', {
       yPercent: -20,
       ease: "none",
@@ -163,13 +129,13 @@ const CaseStudyDetail = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="min-h-screen flex items-center justify-center"
+        className="min-h-screen flex items-center justify-center dark:bg-slate-900"
       >
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Case Study Not Found</h2>
+          <h2 className="text-2xl font-bold mb-4 dark:text-white">Case Study Not Found</h2>
           <Link 
             to="/" 
-            className="text-rose-600 hover:text-rose-700 inline-flex items-center"
+            className="text-rose-600 hover:text-rose-700 dark:text-rose-400 dark:hover:text-rose-300 inline-flex items-center transition-colors"
           >
             <ArrowLeft className="mr-2" /> Return Home
           </Link>
@@ -184,7 +150,7 @@ const CaseStudyDetail = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="min-h-screen bg-white"
+        className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300"
       >
         {/* Hero Section with Parallax */}
         <motion.div 
@@ -205,7 +171,7 @@ const CaseStudyDetail = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="absolute inset-0 bg-black/50" 
+            className="absolute inset-0 bg-black/50 dark:bg-black/70" 
           />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -257,16 +223,16 @@ const CaseStudyDetail = () => {
             className="animate-section grid md:grid-cols-2 gap-12 mb-20"
           >
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-6">
                 The Challenge
               </h2>
-              <p className="text-gray-600 leading-relaxed">{study.challenge}</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{study.challenge}</p>
             </div>
             <div>
-              <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-6">
                 Our Solution
               </h2>
-              <p className="text-gray-600 leading-relaxed">{study.solution}</p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{study.solution}</p>
             </div>
           </motion.div>
 
@@ -278,7 +244,7 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section mb-20"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
               Our Process
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -295,13 +261,13 @@ const CaseStudyDetail = () => {
                     stiffness: 300
                   }}
                   viewport={{ once: true }}
-                  className="relative p-8 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 group"
+                  className="relative p-8 bg-gray-50 dark:bg-slate-800 rounded-lg hover:shadow-lg dark:shadow-slate-700/50 transition-all duration-300 group"
                 >
-                  <div className="absolute -top-4 left-8 w-8 h-8 bg-rose-600 text-white rounded-full flex items-center justify-center font-bold group-hover:rotate-12 transition-transform">
+                  <div className="absolute -top-4 left-8 w-8 h-8 bg-rose-600 dark:bg-rose-500 text-white rounded-full flex items-center justify-center font-bold group-hover:rotate-12 transition-transform">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-semibold mb-4 mt-2">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-xl font-semibold mb-4 mt-2 text-gray-900 dark:text-white">{step.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -315,7 +281,7 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section mb-20"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
               The Results
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -332,10 +298,10 @@ const CaseStudyDetail = () => {
                     stiffness: 300
                   }}
                   viewport={{ once: true }}
-                  className="p-6 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group"
+                  className="p-6 bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-lg shadow-sm hover:shadow-md dark:shadow-slate-700/50 transition-all duration-300 group"
                 >
-                  <div className="w-3 h-3 bg-rose-600 rounded-full mb-4 group-hover:animate-pulse" />
-                  <p className="text-lg font-medium text-gray-900">{result}</p>
+                  <div className="w-3 h-3 bg-rose-600 dark:bg-rose-500 rounded-full mb-4 group-hover:animate-pulse" />
+                  <p className="text-lg font-medium text-gray-900 dark:text-white">{result}</p>
                 </motion.div>
               ))}
             </div>
@@ -349,7 +315,7 @@ const CaseStudyDetail = () => {
             viewport={{ once: true }}
             className="animate-section"
           >
-            <h2 className="text-3xl font-playfair font-bold text-gray-900 mb-12 text-center">
+            <h2 className="text-3xl font-playfair font-bold text-gray-900 dark:text-white mb-12 text-center">
               Project Gallery
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -371,9 +337,9 @@ const CaseStudyDetail = () => {
                   <img
                     src={image}
                     alt={`Gallery image ${index + 1}`}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
                 </motion.div>
               ))}
             </div>
