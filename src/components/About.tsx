@@ -329,7 +329,20 @@ export default function About() {
 
   return (
     <motion.section id="about" className="py-20 relative overflow-hidden bg-gradient-to-br from-white via-rose-50 to-white">
-      <motion.h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">About Me</motion.h2>
+      <motion.section className="py-20 bg-gradient-to-br from-white via-rose-50 to-white text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold mb-6">About Me</h2>
+          <div className="flex flex-col items-center justify-center">
+            <div className="bg-[rgb(225,29,72)] rounded-full w-24 h-24 flex items-center justify-center mb-4">
+              <Lightbulb className="w-12 h-12 text-white" />
+            </div>
+            <p className="text-lg text-gray-700 mb-4">Dynamic and results-driven brand marketing professional with a proven track record in conceptualizing and executing integrated marketing campaigns across multiple channels.</p>
+            <p className="text-lg text-gray-700 mb-4">Keen learner, always looking for the devil in the detail, opportunities to showcase creativity drive me. I enjoy working on projects with multicultural teams and people that bring out the best in each other.</p>
+            <p className="text-lg text-gray-700">I aspire to work in a culturally and intellectually diverse team, where people can learn from each other and grow together towards a common goal.</p>
+          </div>
+        </div>
+      </motion.section>
+      <motion.h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Experience</motion.h2>
       <div className="container mx-auto px-4">
         {/* Highlights Section */}
         <motion.div 

@@ -29,10 +29,16 @@ const Navbar: React.FC = () => {
       color: 'text-indigo-500'
     },
     { 
+      name: 'Skills', 
+      href: '#skills', 
+      icon: Briefcase,
+      color: 'text-teal-500'
+    },
+    { 
       name: 'Projects', 
       href: '#projects', 
       icon: Briefcase,
-      color: 'text-teal-500'
+      color: 'text-orange-500'
     },
     { 
       name: 'Gallery', 
@@ -40,11 +46,12 @@ const Navbar: React.FC = () => {
       icon: Image,
       color: 'text-pink-500'
     },
+    
     { 
-      name: 'Case Studies', 
-      href: '#case-studies', 
-      icon: BookOpen,
-      color: 'text-orange-500'
+      name: 'Testimonials', 
+      href: '#testimonials', 
+      icon: Image,
+      color: 'text-pink-500'
     },
     { 
       name: 'Contact', 

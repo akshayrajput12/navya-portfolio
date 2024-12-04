@@ -20,7 +20,7 @@ const Hero = () => {
   const socialLinks = [
     { 
       icon: Linkedin, 
-      href: 'https://linkedin.com/in/navya', 
+      href: 'linkedin.com/in/navya-n-389426141', 
       color: 'text-indigo-600 hover:text-indigo-700',
       bgColor: 'bg-indigo-50',
       hoverEffect: { 
