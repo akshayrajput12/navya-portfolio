@@ -12,14 +12,22 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email',
-    description: 'marketing@navya.com',
-    color: 'text-purple-600'
+    description: 'navyaa.nav@gmail.com',
+    color: 'text-purple-600',
+    link: 'mailto:navyaa.nav@gmail.com'
   },
   {
     icon: Phone,
     title: 'Phone',
     description: '+1 (555) 123-4567',
     color: 'text-emerald-600'
+  },
+  {
+    icon: Phone,
+    title: 'LinkedIn',
+    description: 'linkedin.com/in/navya-n-389426141',
+    color: 'text-emerald-600',
+    link: 'https://linkedin.com/in/navya-n-389426141'
   }
 ];
 
@@ -135,7 +143,11 @@ const Contact = () => {
                   <contact.icon className={`w-6 h-6 ${contact.color}`} />
                   <div>
                     <h3 className="font-semibold">{contact.title}</h3>
-                    <p className="text-gray-600">{contact.description}</p>
+                    {contact.link ? (
+                      <p className="text-lg mb-2">{contact.title}: <a href={contact.link} className="text-blue-500">{contact.description}</a></p>
+                    ) : (
+                      <p className="text-gray-600">{contact.description}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}

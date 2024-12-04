@@ -35,23 +35,16 @@ const Navbar: React.FC = () => {
       color: 'text-teal-500'
     },
     { 
-      name: 'Projects', 
-      href: '#projects', 
-      icon: Briefcase,
-      color: 'text-orange-500'
-    },
-    { 
-      name: 'Gallery', 
-      href: '#gallery', 
-      icon: Image,
-      color: 'text-pink-500'
-    },
-    
-    { 
       name: 'Testimonials', 
       href: '#testimonials', 
       icon: Image,
       color: 'text-pink-500'
+    },
+    { 
+      name: 'Projects', 
+      href: '#projects', 
+      icon: Briefcase,
+      color: 'text-orange-500'
     },
     { 
       name: 'Contact', 
